@@ -28,7 +28,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
 	use: {
-  baseURL: 'https://tap-ht24-testverktyg.github.io/exam-template/',
+
 
 
     /* Base URL to use in actions like `await page.goto('/')`. */
