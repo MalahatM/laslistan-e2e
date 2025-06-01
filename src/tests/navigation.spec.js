@@ -29,7 +29,7 @@ test.describe('navigation mellan sidor', () => {
   await expect(emptyMessage).toBeVisible({ timeout: 500 });
 });
 
-//back to katalog
+//back to katalog from mina böcker
 test('användaren kan navigera tillbaka till katalog', async ({ page }) => {
   // going ti mina bocker because of katalog btn becomes activ
   const myBooksButton = page.getByRole('button', { name: 'mina böcker' });
@@ -42,6 +42,26 @@ test('användaren kan navigera tillbaka till katalog', async ({ page }) => {
   await katalogButton.click();
 
   // list of books
+  const books = page.locator('.book');
+  await expect(books.first()).toBeVisible();
+});
+
+//back to katalog from lägg till bok
+test('användare kan navigera från lägg till bok till katalog', async ({ page }) => {
+  await page.goto('https://tap-ht24-testverktyg.github.io/exam-template/');
+
+  const addBookBtn = page.getByRole('button', { name: 'lägg till bok'});
+  await expect(addBookBtn).toBeEnabled();
+  await addBookBtn.click();
+//lägg till bok is activ now
+  const addNewBookForm = page.getByRole('button', { name: 'lägg till ny bok' });
+  await expect(addNewBookForm).toBeVisible();
+
+ 
+  const katalogBtn = page.locator('[data-testid="catalog"]');
+  await expect(katalogBtn).toBeEnabled();
+  await katalogBtn.click();
+//list of books
   const books = page.locator('.book');
   await expect(books.first()).toBeVisible();
 });
