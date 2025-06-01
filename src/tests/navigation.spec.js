@@ -30,22 +30,21 @@ test.describe('navigation mellan sidor', () => {
 });
 
 //back to katalog
-//test('användaren kan navigera tillbaka till katalog', async ({ page }) => {
+test('användaren kan navigera tillbaka till katalog', async ({ page }) => {
   // going ti mina bocker because of katalog btn becomes activ
-  //const myBooksButton = page.getByRole('button', { name: 'mina böcker' });
- // await expect(myBooksButton).toBeEnabled();
-  //await myBooksButton.click();
+  const myBooksButton = page.getByRole('button', { name: 'mina böcker' });
+  await expect(myBooksButton).toBeEnabled();
+  await myBooksButton.click();
 
-  // katalog btn is active now
-  //const katalogButton = page.locator('[data-testid="catalog"]');
- // await expect(katalogButton).toBeEnabled();
- // await katalogButton.click();
+   //katalog btn is active now
+  const katalogButton = page.locator('[data-testid="catalog"]');
+  await expect(katalogButton).toBeEnabled();
+  await katalogButton.click();
 
   // list of books
-  //const books = page.locator('.book');
- // await expect(books.first()).toBeVisible();
-//});
-
+  const books = page.locator('.book');
+  await expect(books.first()).toBeVisible();
+});
 
 });
 
