@@ -29,5 +29,11 @@ test.describe('lägg till bok till katalog', () => {
      await submitButton.click();
 	 //4.vänta lite för att alla ändringarna fixat.
 	 await page.waitForTimeout(1000);
+	 // 5. Gå tillbaka till Katalog
+  const katalogButton = page.getByRole('button', { name: 'katalog' });
+  await expect(katalogButton).toBeEnabled({ timeout: 500 });
+  await katalogButton.click();
+
+ 
 });
 });
