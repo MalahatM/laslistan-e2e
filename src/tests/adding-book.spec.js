@@ -27,5 +27,7 @@ test.describe('lägg till bok till katalog', () => {
      const submitButton = page.getByRole('button', { name: 'lägg till ny bok' });
      await expect(submitButton).toBeEnabled({ timeout: 500 });
      await submitButton.click();
+	 //4.vänta lite för att alla ändringarna fixat.
+	 await page.waitForTimeout(1000);
 });
 });
