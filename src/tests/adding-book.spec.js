@@ -23,5 +23,9 @@ test.describe('lägg till bok till katalog', () => {
 	 const writerInput = page.getByTestId('add-input-author');
      await expect(writerInput).toBeVisible({ timeout: 500 });
      await writerInput.fill('Sussanna');
+ //3. Klicka på "lägg till ny bok"
+     const submitButton = page.getByRole('button', { name: 'lägg till ny bok' });
+     await expect(submitButton).toBeEnabled({ timeout: 500 });
+     await submitButton.click();
 });
 });
