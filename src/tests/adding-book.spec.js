@@ -19,5 +19,9 @@ test.describe('lägg till bok till katalog', () => {
     const titleInput = page.getByTestId('add-input-title');
     await expect(titleInput).toBeVisible({ timeout: 500 });
     await titleInput.fill('chokolat');
+	//2.fyll för författare
+	 const writerInput = page.getByTestId('add-input-author');
+     await expect(writerInput).toBeVisible({ timeout: 500 });
+     await writerInput.fill('Sussanna');
 });
 });
