@@ -30,6 +30,10 @@ test('visar endast favoritböcker i mina böcker från katalog sidan)', async ({
   await expect(myBooksButton).toBeEnabled();
   await myBooksButton.click();
 
+  // verifierar att en bok visas
+  const favoriteBooks = page.locator('.book');
+  await expect(favoriteBooks.first()).toBeVisible();
+
   
 });
 });
