@@ -34,7 +34,9 @@ test('visar endast favoritböcker i mina böcker från katalog sidan)', async ({
   const favoriteBooks = page.locator('.book');
   await expect(favoriteBooks.first()).toBeVisible();
 
-  
+  // meddelandet om tom favoritlista ska inte visas längre
+  const defaultMessage = page.getByText(/när du valt, kommer dina favoritböcker att visas här/i);
+  await expect(defaultMessage).not.toBeVisible();
 });
 });
 
