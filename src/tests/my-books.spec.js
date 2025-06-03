@@ -25,7 +25,12 @@ test('visar endast favoritböcker i mina böcker från katalog sidan)', async ({
   await expect(firstStar).toBeVisible();
   await firstStar.click();
 
+  //  går tillbaka till mina böcker page
+  const myBooksButton = page.getByRole('button', { name: 'mina böcker' });
+  await expect(myBooksButton).toBeEnabled();
+  await myBooksButton.click();
 
+  
 });
 });
 
