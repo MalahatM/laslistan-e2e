@@ -9,7 +9,7 @@ test.describe('katalog sidan', () => {
     await expect(page.getByRole('heading', { name: 'Välkommen!' })).toBeVisible();
     await expect(page.getByText('Sidan för dig som gillar att läsa. Välj dina favoriter.')).toBeVisible();
 // Kontrollera att Katalog Btn är synlig men inaktiv
-    const katalogButton = page.locator('[data-testid="catalog"]');
+    const katalogButton = page.getByRole('button', { name: 'katalog' });
     await expect(katalogButton).toBeVisible();
     await expect(katalogButton).toBeDisabled();
 // Kontrollera att det finns books
