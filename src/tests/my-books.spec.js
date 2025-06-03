@@ -5,6 +5,7 @@ test.describe('mina böcker', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://tap-ht24-testverktyg.github.io/exam-template/');
 });
+//1.test när finns inget favoritmarkering
 test ('användaren ser ett meddelande om inga favoritböcker finns(tom)',async({page})=>{
 	//  klicka på mina böcker btn
 	const myBooksButton =page.getByRole('button',{name:'mina böcker'});
@@ -15,4 +16,16 @@ test ('användaren ser ett meddelande om inga favoritböcker finns(tom)',async({
 	await expect(defaultMessage).toBeVisible({timeout:500});
 
 });
+
+test('visar endast favoritböcker i mina böcker från katalog sidan)', async ({ page }) => {
+  // navigerar till katalog 
+
+  // markerar första boken som favorit
+  const firstStar = page.locator('.book .star').first();
+  await expect(firstStar).toBeVisible();
+  await firstStar.click();
+
+
 });
+});
+
