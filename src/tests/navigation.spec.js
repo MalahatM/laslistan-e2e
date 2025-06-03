@@ -37,7 +37,7 @@ test('användaren kan navigera tillbaka till katalog', async ({ page }) => {
   await myBooksButton.click();
 
    //katalog btn is active now
-  const katalogButton = page.locator('[data-testid="catalog"]');
+  const katalogButton = page.getByRole('button', { name: 'katalog' });
   await expect(katalogButton).toBeEnabled();
   await katalogButton.click();
 
@@ -58,7 +58,7 @@ test('användare kan navigera från lägg till bok till katalog', async ({ page 
   await expect(addNewBookForm).toBeVisible();
 
  
-  const katalogBtn = page.locator('[data-testid="catalog"]');
+  const katalogBtn = page.getByRole('button', { name: 'katalog' });
   await expect(katalogBtn).toBeEnabled();
   await katalogBtn.click();
 //list of books
