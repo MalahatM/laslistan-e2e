@@ -1,15 +1,15 @@
-
+# läslistan
 Detta projekt innehåller automatiserade end-to-end-tester för webbapplikationen Laslistan med hjälp av [Playwright](https://playwright.dev/).
 
 Det är också en webbapplikation där användare kan skapa, favoritmarkera och hantera sina böcker i en personlig läslista.
 
-Om applikationen
+## Om applikationen
 Laslistan är en enkel bokapplikation där användare kan:
 
-1 Se en katalog med böcker
- 2.Markera sina favoritböcker
- 3.Lägga till nya böcker
- 4.Visa sina favoritböcker på en separat sida
+1. Se en katalog med böcker
+ 2. Markera sina favoritböcker
+ 3. Lägga till nya böcker
+ 4. Visa sina favoritböcker på en separat sida
 
 
 Projektet innehåller tester om:
