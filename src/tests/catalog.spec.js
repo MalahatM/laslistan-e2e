@@ -29,4 +29,24 @@ test.describe('katalog sidan', () => {
 		
 		expect(newClass).not.toBe(initialClass);
 	});
+	
+	test('användaren kan ta bort en bok från sina favoriter', async ({ page }) => {
+		// hitta favorit btn
+		const star = page.locator('.book .star').first();
+		const originalClass = await star.getAttribute('class');
+		
+		//klicka på btn för favoritmarkera 
+		await star.click();
+		//Säkerställ att klassen ändras efter att boken markerats som favorit
+		const favoritedClass = await star.getAttribute('class');
+		expect(favoritedClass).not.toBe(originalClass);
+		
+		// klicka andra gången på stjärnan för att ta bort favoriten
+		await star.click();
+		
+		// återställa klassen till initial
+		const finalClass = await star.getAttribute('class');
+		expect(finalClass).toBe(originalClass);
+	});
+	
 });
