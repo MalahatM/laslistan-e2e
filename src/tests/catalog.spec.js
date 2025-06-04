@@ -29,7 +29,7 @@ test.describe('katalog sidan', () => {
 		
 		expect(newClass).not.toBe(initialClass);
 	});
-	
+	//3.kan tabort favoritmarkering genom att dubbelklicka
 	test('användaren kan ta bort en bok från sina favoriter', async ({ page }) => {
 		// hitta favorit btn
 		const star = page.locator('.book .star').first();
