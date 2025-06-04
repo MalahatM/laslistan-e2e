@@ -36,7 +36,37 @@ test.describe('lägg till bok till katalog', () => {
 		await expect(page.locator('text=chokolat')).toBeVisible({ timeout: 1000 });
 		await expect(page.locator('text=Sussanna')).toBeVisible({ timeout: 1000 });
 		
-		
-		
 	});
+	// lägga till flera bok samtidigt & (olika språk)
+	test('användaren kan lägga till flera olika böcker med titel och författare', async ({ page }) => {
+		
+		const läggTillBok = async (titel, författare) => {
+			await page.getByTestId('add-input-title').fill(titel);
+			await page.getByTestId('add-input-author').fill(författare);
+			
+			const submitButton = page.getByRole('button', { name: 'lägg till ny bok' });
+			await expect(submitButton).toBeEnabled();
+			await submitButton.click();
+		};
+		
+		// första bok(Svenska)
+		await läggTillBok("Stjärna på hemlen", "Alex Björn");
+		//andra bok(Engelska)
+		await läggTillBok("Science About Body", "Jack Jordan");
+		//tredje bok(Persiska)
+		await läggTillBok(" کتاب خنده‌دار", " ملاحت")
+		
+		// gå tillbaka till katalog
+		const katalogButton = page.getByRole('button', { name: 'katalog' });
+		await expect(katalogButton).toBeEnabled();
+		await katalogButton.click();
+		//kontrollera om böckerna ar synlig i katalog
+		await expect(page.locator('text=Stjärna på himlen')).toBeVisible();
+		await expect(page.locator('text=Alex Björn')).toBeVisible();
+		await expect(page.locator('text=Science About Body')).toBeVisible();
+		await expect(page.locator('text=Jack Jordan')).toBeVisible();
+		await expect(page.locator('text=کتاب خنده‌دار')).toBeVisible();
+		await expect(page.locator('text=ملاحت')).toBeVisible();
+	});
+	
 });
