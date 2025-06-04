@@ -5,10 +5,10 @@ test.describe('navigation mellan sidor', () => {
 		await page.goto('https://tap-ht24-testverktyg.github.io/exam-template/');
 	});
 	
-	
-	test('användare kan gå mellan tre avdelningarna: "katalog", "lägg till bok" och "mina böcker"', async ({ page }) => {
+	//1.going to lägg till bok
+	test('användaren kan navigera till lägg till bok', async ({ page }) => {
 		
-		//1.going to lägg till bok
+		
 		const addBookButton = page.getByRole('button', { name: 'lägg till bok' });
 		await expect(addBookButton).toBeEnabled();
 		await addBookButton.click();
