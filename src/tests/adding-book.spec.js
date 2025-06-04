@@ -27,13 +27,12 @@ test.describe('lägg till bok till katalog', () => {
 		const submitButton = page.getByRole('button', { name: 'lägg till ny bok' });
 		await expect(submitButton).toBeEnabled({ timeout: 500 });
 		await submitButton.click();
-		//4.vänta lite för att alla ändringarna fixat.
-		await page.waitForTimeout(500);
-		// 5. Gå tillbaka till Katalog
+		
+		// 4. Gå tillbaka till Katalog
 		const katalogButton = page.getByRole('button', { name: 'katalog' });
 		await expect(katalogButton).toBeEnabled({ timeout: 500 });
 		await katalogButton.click();
-		// 6. Kontrollera att boken syns i listan
+		// 5. Kontrollera att boken syns i listan
 		await expect(page.locator('text=chokolat')).toBeVisible({ timeout: 1000 });
 		await expect(page.locator('text=Sussanna')).toBeVisible({ timeout: 1000 });
 		
