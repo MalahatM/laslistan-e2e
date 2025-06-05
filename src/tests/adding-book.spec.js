@@ -50,7 +50,7 @@ test.describe('lägg till bok till katalog', () => {
 		};
 		
 		// första bok(Svenska)
-		await läggTillBok("Stjärna på hemlen", "Alex Björn");
+		await läggTillBok("Stjärna på himlen", "Alex Björn");
 		//andra bok(Engelska)
 		await läggTillBok("Science About Body", "Jack Jordan");
 		//tredje bok(Persiska)
@@ -68,5 +68,26 @@ test.describe('lägg till bok till katalog', () => {
 		await expect(page.locator('text=کتاب خنده‌دار')).toBeVisible();
 		await expect(page.locator('text=ملاحت')).toBeVisible();
 	});
+	
+	test('Btn lägg till ny bok ska inte vara aktiv om titel eller författare saknas', async ({ page }) => {
+		
+		// först fyll i endast titel
+		const titleInput = page.getByTestId('add-input-title');
+		await titleInput.fill('maten var fantastik');
+		
+		const submitButton = page.getByRole('button', { name: 'lägg till ny bok' });
+		
+		// Ska vara inaktiv eftersom författare saknas
+		await expect(submitButton).toBeDisabled();
+		
+		// Sen tabort titel och fyll bara i författare
+		await titleInput.fill('');
+		const writerInput = page.getByTestId('add-input-author');
+		await writerInput.fill('malahat mortezavi');
+		
+		// Fortfarande ska btn vara inaktiv
+		await expect(submitButton).toBeDisabled();
+	});
+	
 	
 });
